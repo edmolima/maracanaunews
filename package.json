@@ -1,7 +1,7 @@
 {
   "name": "maracanaunews",
   "private": true,
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Monorepo for serverless news scrapers, infrastructure, and shared tooling.",
   "workspaces": [
     "packages/*",
