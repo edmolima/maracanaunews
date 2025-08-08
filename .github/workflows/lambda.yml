@@ -1,0 +1,67 @@
+name: Lambdas CI/CD
+
+on:
+  push:
+    paths:
+      - 'packages/lambda/**'
+      - 'packages/worker/**'
+      - 'packages/scheduler/**'
+      - '.github/workflows/lambda.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      matrix:
+        lambda:
+          - lambda
+          - worker
+          - scheduler
+    defaults:
+      run:
+        working-directory: packages/${{ matrix.lambda }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Zip Lambda
+        run: |
+          zip -r ../../${{ matrix.lambda }}.zip . -x "node_modules/*" "__tests__/*" "tests/*"
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: us-east-1
+
+      - name: Terraform Init
+        run: |
+          cd ../../infra
+          terraform init
+
+      - name: Terraform Apply (Deploy Lambda)
+        run: |
+          cd ../../infra
+          terraform apply -auto-approve -target=module.lambda_${{ matrix.lambda }}.aws_lambda_function.this

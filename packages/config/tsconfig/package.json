@@ -1,0 +1,6 @@
+{
+  "name": "@maracanaunews/tsconfig",
+  "version": "1.0.0",
+  "main": "tsconfig.node.json",
+  "type": "module"
+}

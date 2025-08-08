@@ -1,0 +1,33 @@
+{
+  "name": "maracanaunews",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Monorepo for serverless news scrapers, infrastructure, and shared tooling.",
+  "workspaces": [
+    "packages/*",
+    "packages/config/*",
+    "infra",
+    "docs"
+  ],
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "clean": "pnpm -r clean",
+    "typecheck": "pnpm -r typecheck",
+    "dev": "pnpm -r dev",
+    "ci": "pnpm lint && pnpm format --check && pnpm typecheck && pnpm test && pnpm build",
+    "deploy": "echo 'Use per-package deploy scripts or CI/CD workflows'"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edmolima/maracanaunews.git"
+  },
+  "author": "edmolima",
+  "license": "MIT"
+}

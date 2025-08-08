@@ -1,0 +1,9 @@
+{
+  "name": "@maracanaunews/prettier-config",
+  "version": "1.0.0",
+  "main": "prettier.config.mjs",
+  "type": "module",
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  }
+}

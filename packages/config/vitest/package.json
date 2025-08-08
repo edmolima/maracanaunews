@@ -1,0 +1,9 @@
+{
+  "name": "@maracanaunews/vitest-config",
+  "version": "1.0.0",
+  "main": "vitest.config.cjs",
+  "type": "commonjs",
+  "peerDependencies": {
+    "vitest": ">=1.0.0"
+  }
+}
