@@ -6,6 +6,7 @@ Thank you for your interest in contributing! Please follow these guidelines:
 - Fork the repository and create a new branch for your change.
 - Write clear, concise commit messages in English.
 - Ensure your code is modular, clean, and follows best practices.
+- Reference the correct structure: workflows in `.github/workflows/`, custom actions in `.github/actions/`, Lambda code in `packages/`, zipped artifacts in `lambdas/`.
 - Add or update documentation and tests as needed.
 - Submit a pull request and describe your changes.
 

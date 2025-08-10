@@ -6,10 +6,12 @@ Accepted
 ## Context
 To ensure safe, automated, and open source-friendly deployments, we need a secure CI/CD pipeline and strict security practices.
 
+
 ## Decision
-- Use GitHub Actions for all CI/CD workflows.
+- Use GitHub Actions for all CI/CD workflows (in `.github/workflows/`).
 - Use OIDC for secure, secretless AWS authentication.
 - Each Lambda and infra has its own modular workflow.
+- Custom composite actions are in `.github/actions/` for DRY build/zip logic.
 - All IAM roles use least privilege and are scoped to project resources only.
 - No secrets or credentials are versioned; only placeholders are used.
 - All contributors must follow security best practices (see SECURITY.md).

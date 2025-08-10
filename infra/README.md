@@ -2,16 +2,19 @@
 
 This directory contains all Terraform code for provisioning the AWS serverless stack.
 
+
 ## Modules
 - **sqs**: SQS queue for distributing scraping jobs
 - **dynamodb**: DynamoDB table for deduplication and storage
 - **cloudwatch**: Log group for Lambda logs
 - **eventbridge**: Scheduler for periodic Lambda execution
-- **lambda**: Lambda function deployment
+- **lambda**: Lambda function deployment (zips from `lambdas/`, source in `packages/`)
 - **iam**: IAM roles and policies
+
 
 ## Usage
 - Edit variables in `main.tf` as needed
+- Build and zip all Lambdas (see `.github/actions/build-zip-lambdas` or run locally)
 - Run `terraform init && terraform apply` to deploy
 
 ## Outputs
@@ -20,4 +23,5 @@ This directory contains all Terraform code for provisioning the AWS serverless s
 - Lambda ARNs
 - EventBridge rule ARN
 
-For more details, see the main [README.md](../README.md).
+
+For more details, see the main [README.md](../README.md) and CI/CD workflows in `.github/workflows/`.
