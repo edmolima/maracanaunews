@@ -119,6 +119,7 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "logs:ListTagsForResource",
         "events:ListTagsForResource",
         "lambda:GetFunctionCodeSigningConfig",
+        "lambda:GetPolicy",
         "iam:ListAttachedRolePolicies",
         "iam:GetPolicyVersion"
       ],
