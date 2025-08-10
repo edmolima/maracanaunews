@@ -17,6 +17,7 @@
     "build": "pnpm -r build",
     "clean": "pnpm -r clean",
     "typecheck": "pnpm -r typecheck",
+    "coverage": "pnpm -r coverage",
     "dev": "pnpm -r dev",
     "ci": "pnpm lint && pnpm format --check && pnpm typecheck && pnpm test && pnpm build",
     "deploy": "echo 'Use per-package deploy scripts or CI/CD workflows'"

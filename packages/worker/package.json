@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "format": "prettier --check .",
     "test": "vitest run",
+    "coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project tsconfig.json --watch"
@@ -23,6 +24,7 @@
     "eslint": "^8.0.0",
     "prettier": "^3.0.0",
     "typescript": "^5.0.0",
-    "vitest": "^1.0.0"
+    "vitest": "^1.0.0",
+    "@vitest/coverage-v8": "^1.0.0"
   }
 }

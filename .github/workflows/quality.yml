@@ -48,8 +48,8 @@ jobs:
         with:
           version: 9
       - run: pnpm install
-      - name: Run tests with coverage
-        run: pnpm test -- --coverage
+      - name: Run tests with coverage (all packages)
+        run: pnpm coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
