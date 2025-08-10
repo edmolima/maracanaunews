@@ -122,6 +122,7 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "lambda:GetFunctionCodeSigningConfig",
         "lambda:GetPolicy",
         "lambda:RemovePermission",
+        "lambda:AddPermission",
         "iam:ListAttachedRolePolicies",
         "iam:GetPolicyVersion"
       ],
