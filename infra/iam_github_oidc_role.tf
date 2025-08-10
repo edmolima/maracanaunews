@@ -96,7 +96,9 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
     {
       "Effect": "Allow",
       "Action": [
-        "iam:GetRolePolicy"
+        "iam:GetRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:GetPolicyVersion"
       ],
       "Resource": "*"
     },
@@ -108,9 +110,13 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "iam:GetRole",
         "sqs:ListQueueTags",
         "dynamodb:DescribeTable",
+        "dynamodb:DescribeContinuousBackups",
         "iam:ListRolePolicies",
         "iam:GetPolicy",
-        "logs:ListTagsForResource"
+        "logs:ListTagsForResource",
+        "iam:ListAttachedRolePolicies",
+        "iam:GetPolicyVersion",
+        "dynamodb:DescribeContinuousBackups"
       ],
       "Resource": "*"
     }
