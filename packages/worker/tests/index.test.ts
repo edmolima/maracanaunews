@@ -6,7 +6,7 @@ describe('handler', () => {
     const result = await handler({});
     expect(result).toEqual({
       statusCode: 200,
-      body: JSON.stringify({ message: 'Hello from Lambda A!' }),
+      body: JSON.stringify({ message: 'Worker ran successfully' }),
     });
   });
 });

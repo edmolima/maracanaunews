@@ -2,8 +2,7 @@
   "extends": "@maracanaunews/tsconfig/tsconfig.node.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": ".",
-    "module": "NodeNext"
+    "rootDir": "src"
   },
-  "include": ["src/**/*.ts", "vitest.config.ts", "tests/index.test.ts"]
+  "include": ["./src/index.ts"]
 }
