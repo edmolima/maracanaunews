@@ -48,13 +48,18 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Build
-        run: pnpm build
+      - name: Build all Lambdas
+        run: |
+          cd ../../packages/lambda && pnpm build && cd -
+          cd ../../packages/worker && pnpm build && cd -
+          cd ../../packages/scheduler && pnpm build && cd -
 
-      - name: Zip Lambda
+      - name: Zip all Lambdas
         run: |
           mkdir -p ../../lambdas
-          zip -r ../../lambdas/${{ matrix.lambda }}.zip . -x "node_modules/*" "__tests__/*" "tests/*"
+          cd ../../packages/lambda && zip -r ../../lambdas/lambda.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+          cd ../../packages/worker && zip -r ../../lambdas/worker.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+          cd ../../packages/scheduler && zip -r ../../lambdas/scheduler.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
