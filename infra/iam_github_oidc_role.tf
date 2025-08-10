@@ -63,6 +63,7 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
       "Effect": "Allow",
       "Action": [
         "sqs:GetQueueAttributes",
+        "sqs:SetQueueAttributes",
         "sqs:GetQueueUrl",
         "sqs:ListQueues",
         "sqs:SendMessage",
