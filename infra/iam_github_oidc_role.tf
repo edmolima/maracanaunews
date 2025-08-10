@@ -111,12 +111,14 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "sqs:ListQueueTags",
         "dynamodb:DescribeTable",
         "dynamodb:DescribeContinuousBackups",
+        "dynamodb:DescribeTimeToLive",
         "iam:ListRolePolicies",
         "iam:GetPolicy",
         "logs:ListTagsForResource",
+        "events:ListTagsForResource",
+        "lambda:GetFunctionCodeSigningConfig",
         "iam:ListAttachedRolePolicies",
-        "iam:GetPolicyVersion",
-        "dynamodb:DescribeContinuousBackups"
+        "iam:GetPolicyVersion"
       ],
       "Resource": "*"
     }
