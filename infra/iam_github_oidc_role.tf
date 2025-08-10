@@ -98,7 +98,9 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
       "Action": [
         "iam:GetRolePolicy",
         "iam:ListAttachedRolePolicies",
-        "iam:GetPolicyVersion"
+        "iam:GetPolicyVersion",
+        "dynamodb:ListTagsOfResource",
+        "events:ListTargetsByRule"
       ],
       "Resource": "*"
     },
