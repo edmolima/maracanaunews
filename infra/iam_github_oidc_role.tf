@@ -106,6 +106,27 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "logs:DescribeLogGroups"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "events:DescribeRule"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ListQueueTags"
+      ],
+      "Resource": "*"
     }
   ]
 }
