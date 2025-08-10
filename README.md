@@ -1,11 +1,16 @@
 # Serverless Scraper AWS with Terraform
 
-[![Build Status](https://github.com/edmolima/maracanaunews/actions/workflows/lambda.yml)]
-[![Infra Build Status](https://github.com/edmolima/maracanaunews/actions/workflows/infra.yml/badge.svg)](https://github.com/edmolima/maracanaunews/actions)
+
+[![Lambdas CI](https://github.com/edmolima/maracanaunews/actions/workflows/lambda.yml/badge.svg)](https://github.com/edmolima/maracanaunews/actions/workflows/lambda.yml)
+[![Infra CI](https://github.com/edmolima/maracanaunews/actions/workflows/infra.yml/badge.svg)](https://github.com/edmolima/maracanaunews/actions/workflows/infra.yml)
+[![Quality Gates](https://github.com/edmolima/maracanaunews/actions/workflows/quality.yml/badge.svg)](https://github.com/edmolima/maracanaunews/actions/workflows/quality.yml)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/edmolima/maracanaunews?label=coverage)](https://app.codecov.io/gh/edmolima/maracanaunews)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://open.vscode.dev/edmolima/maracanaunews)
 [![Last Commit](https://img.shields.io/github/last-commit/edmolima/maracanaunews)](https://github.com/edmolima/maracanaunews/commits/main)
 [![Issues](https://img.shields.io/github/issues/edmolima/maracanaunews)](https://github.com/edmolima/maracanaunews/issues)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/edmolima?label=sponsor&logo=github)](https://github.com/sponsors/edmolima)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-yellow?logo=buymeacoffee)](https://www.buymeacoffee.com/edmolima)
 
 This repository contains infrastructure as code (Terraform) and Lambda code examples for a distributed news scraper from maracanet.com (Maracanaú).
 
