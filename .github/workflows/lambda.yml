@@ -72,4 +72,4 @@ jobs:
       - name: Terraform Apply (Deploy Lambda)
         run: |
           cd ../../infra
-          terraform apply -auto-approve -target=module.lambda_${{ matrix.lambda }}.aws_lambda_function.this
+          terraform apply -auto-approve
