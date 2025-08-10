@@ -33,12 +33,36 @@ jobs:
         run: |
           aws s3api head-bucket --bucket maracanaunews-terraform-state || aws s3api create-bucket --bucket maracanaunews-terraform-state --region us-east-1
 
-      - name: Terraform Init
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build all Lambdas
         run: |
-          cd infra
-          terraform init
+          cd packages/lambda && pnpm build && cd -
+          cd packages/worker && pnpm build && cd -
+          cd packages/scheduler && pnpm build && cd -
+
+      - name: Zip all Lambdas
+        run: |
+          mkdir -p lambdas
+          cd packages/lambda && zip -r ../../lambdas/lambda.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+          cd packages/worker && zip -r ../../lambdas/worker.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+          cd packages/scheduler && zip -r ../../lambdas/scheduler.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+
+      - name: Terraform Init
+        working-directory: infra
+        run: terraform init
 
       - name: Terraform Apply
-        run: |
-          cd infra
-          terraform apply -auto-approve
+        working-directory: infra
+        run: terraform apply -auto-approve
