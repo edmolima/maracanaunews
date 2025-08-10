@@ -107,7 +107,10 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "events:DescribeRule",
         "iam:GetRole",
         "sqs:ListQueueTags",
-        "dynamodb:DescribeTable"
+        "dynamodb:DescribeTable",
+        "iam:ListRolePolicies",
+        "iam:GetPolicy",
+        "logs:ListTagsForResource"
       ],
       "Resource": "*"
     }
