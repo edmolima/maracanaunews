@@ -34,8 +34,8 @@ jobs:
         with:
           version: 9
       - run: pnpm install
-      - name: TypeScript type-check
-        run: pnpm exec tsc --noEmit
+      - name: TypeScript type-check (all packages)
+        run: pnpm typecheck
 
   test:
     runs-on: ubuntu-latest
