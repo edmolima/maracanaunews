@@ -5,7 +5,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "lint": "eslint .",
+    "lint": "eslint src/**/*",
+    "lint:fix": "eslint src/**/* --fix",
     "format": "prettier --check .",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
@@ -14,17 +15,17 @@
     "dev": "tsc --project tsconfig.json --watch"
   },
   "devDependencies": {
-    "@maracanaunews/eslint-config": "workspace:^1.0.0",
-    "@maracanaunews/prettier-config": "workspace:^1.0.0",
-    "@maracanaunews/tsconfig": "workspace:^1.0.0",
-    "@maracanaunews/vitest-config": "workspace:^1.0.0",
+    "@maracanaunews/eslint-config": "workspace:^",
+    "@maracanaunews/prettier-config": "workspace:^",
+    "@maracanaunews/tsconfig": "workspace:^",
+    "@maracanaunews/vitest-config": "workspace:^",
     "@types/node": "^24.2.1",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5.0.0",
-    "vitest": "^1.0.0",
-    "@vitest/coverage-v8": "^1.0.0"
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.33.0",
+    "prettier": "^3.6.2",
+    "typescript": "5.9.2",
+    "vitest": "^3.2.4"
   }
 }
