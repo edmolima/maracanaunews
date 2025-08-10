@@ -1,6 +1,6 @@
 # Serverless Scraper AWS with Terraform
 
-[![Build Status](https://github.com/edmolima/maracanaunews/actions/workflows/lambda.yml/
+[![Build Status](https://github.com/edmolima/maracanaunews/actions/workflows/lambda.yml/)]
 [![Infra Build Status](https://github.com/edmolima/maracanaunews/actions/workflows/infra.yml/badge.svg)](https://github.com/edmolima/maracanaunews/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://open.vscode.dev/edmolima/maracanaunews)
