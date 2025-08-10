@@ -18,7 +18,7 @@ jobs:
       contents: read
     steps:
       - name: Build and Zip All Lambdas
-        uses: ./.github/workflows/build-zip-lambdas.yml
+        uses: ./.github/actions/build-zip-lambdas
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4

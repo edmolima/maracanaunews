@@ -34,7 +34,7 @@ jobs:
           aws s3api head-bucket --bucket maracanaunews-terraform-state || aws s3api create-bucket --bucket maracanaunews-terraform-state --region us-east-1
 
       - name: Build and Zip All Lambdas
-        uses: ./.github/workflows/build-zip-lambdas.yml
+        uses: ./.github/actions/build-zip-lambdas
 
       - name: Terraform Init
         working-directory: infra

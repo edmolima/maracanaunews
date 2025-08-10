@@ -1,0 +1,43 @@
+name: 'Build and Zip All Lambdas'
+description: 'Builds and zips all Lambda packages for deployment.'
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: 9
+
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
+
+    - name: Build all Lambdas
+      run: |
+        cd packages/lambda && pnpm build && cd -
+        cd packages/worker && pnpm build && cd -
+        cd packages/scheduler && pnpm build && cd -
+      shell: bash
+
+    - name: Clean up old zips
+      run: rm -rf lambdas && mkdir -p lambdas
+      shell: bash
+
+    - name: Zip all Lambdas
+      run: |
+        cd packages/lambda && zip -r ../../lambdas/lambda.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+        cd packages/worker && zip -r ../../lambdas/worker.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+        cd packages/scheduler && zip -r ../../lambdas/scheduler.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+      shell: bash
+
+    - name: Check zip files exist
+      run: |
+        test -f lambdas/lambda.zip
+        test -f lambdas/worker.zip
+        test -f lambdas/scheduler.zip
+      shell: bash
