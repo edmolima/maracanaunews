@@ -92,6 +92,20 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
         "arn:aws:logs:us-east-1:060605029084:log-group:/aws/lambda/scraper-worker:*",
         "arn:aws:logs:us-east-1:060605029084:log-group:/aws/lambda/scraper-maracanet:*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRolePolicy"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogGroups"
+      ],
+      "Resource": "*"
     }
   ]
 }
