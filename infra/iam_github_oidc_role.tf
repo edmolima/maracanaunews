@@ -103,28 +103,11 @@ resource "aws_iam_policy" "github_actions_oidc_least_privilege" {
     {
       "Effect": "Allow",
       "Action": [
-        "logs:DescribeLogGroups"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "events:DescribeRule"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:GetRole"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "sqs:ListQueueTags"
+        "logs:DescribeLogGroups",
+        "events:DescribeRule",
+        "iam:GetRole",
+        "sqs:ListQueueTags",
+        "dynamodb:DescribeTable"
       ],
       "Resource": "*"
     }
