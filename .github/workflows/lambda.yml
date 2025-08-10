@@ -71,11 +71,9 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: |
-          cd ../../infra
-          terraform init
+        working-directory: ../../infra
+        run: terraform init
 
       - name: Terraform Apply (Deploy Lambda)
-        run: |
-          cd ../../infra
-          terraform apply -auto-approve
+        working-directory: ../../infra
+        run: terraform apply -auto-approve
