@@ -16,50 +16,9 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    strategy:
-      matrix:
-        lambda:
-          - lambda
-          - worker
-          - scheduler
-    defaults:
-      run:
-        working-directory: packages/${{ matrix.lambda }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Install dependencies
-        run: pnpm install
-
-      # - name: Lint
-      #   run: pnpm lint
-
-      - name: Test
-        run: pnpm test
-
-      - name: Build all Lambdas
-        run: |
-          cd ../../packages/lambda && pnpm build && cd -
-          cd ../../packages/worker && pnpm build && cd -
-          cd ../../packages/scheduler && pnpm build && cd -
-
-      - name: Zip all Lambdas
-        run: |
-          mkdir -p ../../lambdas
-          cd ../../packages/lambda && zip -r ../../lambdas/lambda.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
-          cd ../../packages/worker && zip -r ../../lambdas/worker.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
-          cd ../../packages/scheduler && zip -r ../../lambdas/scheduler.zip . -x "node_modules/*" "__tests__/*" "tests/*" && cd -
+      - name: Build and Zip All Lambdas
+        uses: ./.github/workflows/build-zip-lambdas.yml
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -71,9 +30,9 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: ../../infra
+        working-directory: infra
         run: terraform init
 
       - name: Terraform Apply (Deploy Lambda)
-        working-directory: ../../infra
+        working-directory: infra
         run: terraform apply -auto-approve
